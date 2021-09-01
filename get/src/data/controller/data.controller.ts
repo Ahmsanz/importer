@@ -25,7 +25,7 @@ export class DataController {
         // date query params will be used to narrow the years series, passed as projection to Mongoose
         let projection = null;
         let ini = from ? parseInt(from) : 1850;
-        let end = to ? parseInt(to) : 2010;
+        let end = to ? parseInt(to) : 2014;
         
         if (country) queryParams.country = new RegExp(country, 'i'); //regex allows to query by proximity
         if (sector) queryParams.sector = new RegExp(sector, 'i');

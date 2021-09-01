@@ -10,7 +10,14 @@ export class DataService {
     constructor(
         @InjectModel('row') private readonly rowModel: Model<RowDocument>,
     ) {}
-
+    
+    /**
+     * This is the method that will handle the reading of the file provided and will save its content to the database.
+     * It uses the **fs** node module to read the file that has been saved in a temp folder by the controller; reads the content, uses the **csv-parser** library to parse the csv file and saves every row into the databse.
+     * If something goes wrong in the process, the method will throw an error in the catch statement, which will be returned.
+     * 
+     * @returns void, which will lead in the controller either to a string confirming that the data has been saved to the database, or an error
+     */
     public async handleFile(): Promise<void> {
         try {
             const files = fs.readdirSync('./files');
@@ -40,6 +47,12 @@ export class DataService {
         }        
     }
 
+    /**
+     * This private method saves every specific row data into the database
+     * 
+     * @param rowDto the dto build from the table row data
+     * @returns a saved Row object
+     */
     private async saveRow(rowDto: CreateRowDto): Promise<Row> {
         try {
             const row = await this.rowModel.create(rowDto);

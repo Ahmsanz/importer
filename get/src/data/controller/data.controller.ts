@@ -12,6 +12,7 @@ export class DataController {
     
     @Get()    
     async getData(
+        //list of accepted query parameters
         @Query('country') country?: string,
         @Query('sector') sector?: string,
         @Query('limit') limit?: string,

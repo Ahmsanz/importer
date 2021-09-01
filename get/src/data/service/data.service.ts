@@ -11,19 +11,29 @@ export class DataService {
         @InjectModel('row') private readonly rowModel: Model<RowDocument>,
     ) {}
 
-    public async getData(queryParams: QueryParamsInterface, pagination?: PaginationInterface): Promise<RowInterface[]> {
+    public async getData(queryParams: QueryParamsInterface, projection?: object, pagination?: PaginationInterface): Promise<RowInterface[]> {
         try {
             const data: RowInterface[] = await this.rowModel
-                .find(queryParams)
+                .find(queryParams, projection)
                 .skip(pagination.skip)
                 .limit(pagination.limit)
                 .exec()
-        
+            
             return data;
         } catch (err) {
             console.log(err)
             throw new Error('Something went wrong retrieving the data.')
         }
         
+    }
+
+    public getProjectionSeries(ini: number, end: number): object {
+        const projection = {};
+
+        for (let i = ini; i < (end + 1); i++) {
+            projection[i.toString()] = 1;
+        }
+        
+        return projection;
     }
 }

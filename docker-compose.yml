@@ -5,7 +5,7 @@ services:
     image: get
     build:
       context: get/
-      dockerfile: .././get/Dockerfile
+      dockerfile: ./Dockerfile
     command: npm run start:dev
     ports:
       - 3000:3000
@@ -22,7 +22,7 @@ services:
     image: post
     build:
       context: post/
-      dockerfile: .././post/Dockerfile
+      dockerfile: ./Dockerfile
     command: npm run start:dev
     ports:
       - 5000:5000

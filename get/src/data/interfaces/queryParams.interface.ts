@@ -1,4 +1,4 @@
 export interface QueryParamsInterface {
-    country?: string;
-    sector?: string;
+    country?: RegExp;
+    sector?: RegExp;
 } 

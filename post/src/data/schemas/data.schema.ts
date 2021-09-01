@@ -7,7 +7,7 @@ export interface Series {
 
 export type RowDocument = Row & Document;
 
-@Schema()
+@Schema({ timestamps: true })
 export class Row {
     @Prop()
     country?: string;

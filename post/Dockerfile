@@ -1,10 +1,8 @@
 FROM node:14.17.5-alpine3.14
 
-WORKDIR /adrian/post/src/
+WORKDIR /importer/post
 
 COPY package*.json ./
-
-RUN npm install glob rimraf
 
 RUN npm install
 

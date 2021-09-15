@@ -15,7 +15,7 @@ services:
       - mongodb
     volumes:
       - .:/usr/get/
-      - get/node_modules
+      - /usr/get/src/node_modules
     restart: on-failure
   post:
     container_name: nestjs_api_post
@@ -32,7 +32,7 @@ services:
       - mongodb
     volumes:
       - .:/usr/post/
-      - post/node_modules
+      - /usr/post/src/node_modules
     restart: on-failure
   mongodb:
     image : mongo:latest

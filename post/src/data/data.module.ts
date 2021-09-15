@@ -6,7 +6,8 @@ import { DataService } from './service/data.service';
 
 @Module({
   imports: [MongooseModule.forFeature([{ name: 'row', schema: DataSchema }])],
-  controllers: [DataController  ],
-  providers: [DataService]
+  controllers: [DataController],
+  providers: [DataService],
+  exports: [DataService],
 })
 export class DataModule {}

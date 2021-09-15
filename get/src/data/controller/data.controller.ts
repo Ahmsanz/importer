@@ -40,6 +40,7 @@ export class DataController {
                 }
             }
         }
+        // if 'from' or 'to' parameters are provided, a projection object will be built to narrow the years span provided by the 'series' object
         if (from || to) {
             projection = {
                 country: 1, 

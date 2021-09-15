@@ -10,7 +10,15 @@ export class DataService {
     constructor(
         @InjectModel('row') private readonly rowModel: Model<RowDocument>,
     ) {}
-
+    
+    /**
+     * This public method retrieves the information from the database with the restrictions expressed by the query parameters
+     * 
+     * @param queryParams object with the query parameters passed from the front request
+     * @param projection object with the projection that will be passed to MongoDB
+     * @param pagination object with the skip and limit parameters that will be passed to MongoDB to paginate the result
+     * @returns 
+     */
     public async getData(queryParams: QueryParamsInterface, projection?: object, pagination?: PaginationInterface): Promise<RowInterface[]> {
         try {
             const data: RowInterface[] = await this.rowModel
@@ -27,6 +35,13 @@ export class DataService {
         
     }
 
+    /**
+     * This method will build the projection object for the Mongo query
+     * 
+     * @param ini wished start year for the series object
+     * @param end wished end year for the series object
+     * @returns 
+     */
     public getProjectionSeries(ini: number, end: number): object {
         const projection = {};
 
